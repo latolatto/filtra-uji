@@ -1,0 +1,85 @@
+const page = document.body.dataset.page || "home";
+const navItems = [["home", "Kryefaqja", "index.html"], ["solutions", "Zgjidhjet", "zgjidhjet.html"], ["products", "Produktet", "produktet.html"], ["services", "Shërbimet", "sherbimet.html"], ["careers", "Karriera", "karriera.html"], ["contact", "Kontakt", "kontakt.html"]];
+
+const header = document.querySelector("#site-header");
+if (header) header.innerHTML = `<div class="topline"><div class="container topline-inner"><span>Zgjidhje profesionale për filtrimin e ujit</span><div class="topline-links"><a class="top-social" href="https://wa.me/355685736059" target="_blank" rel="noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.4a9.4 9.4 0 0 0-8.1 14.2L2.7 21l4.6-1.2A9.4 9.4 0 1 0 12 2.4Zm0 16.9a7.5 7.5 0 0 1-3.8-1l-.3-.2-2.7.7.7-2.6-.2-.3a7.5 7.5 0 1 1 6.3 3.4Zm4.1-5.6c-.2-.1-1.3-.7-1.5-.7-.2-.1-.4-.1-.5.1-.2.2-.6.7-.8.9-.1.1-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.7-.6-1.1-1.3-1.3-1.5-.1-.2 0-.4.1-.5l.4-.4.2-.4c.1-.1 0-.3 0-.4s-.5-1.2-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.4 3.8 3.3.5.2.9.4 1.2.4.5.2 1 .1 1.4.1.4-.1 1.3-.5 1.5-1 .2-.5.2-.9.1-1-.1-.1-.2-.2-.4-.3Z"/></svg></a><a class="top-social" href="https://www.instagram.com/gruenheim_water_filter_albania/" target="_blank" rel="noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 2.8h9.6a4.4 4.4 0 0 1 4.4 4.4v9.6a4.4 4.4 0 0 1-4.4 4.4H7.2a4.4 4.4 0 0 1-4.4-4.4V7.2a4.4 4.4 0 0 1 4.4-4.4Zm0 1.9a2.5 2.5 0 0 0-2.5 2.5v9.6a2.5 2.5 0 0 0 2.5 2.5h9.6a2.5 2.5 0 0 0 2.5-2.5V7.2a2.5 2.5 0 0 0-2.5-2.5H7.2Zm4.8 2.5a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 1.9a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5-3.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></a><a class="top-social facebook-icon" href="https://www.facebook.com/profile.php?id=61591731335404" target="_blank" rel="noreferrer" aria-label="Facebook">f</a><span class="topline-divider"></span><a class="top-phone" href="tel:+355685736059">+355 68 573 6059</a></div></div></div><header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html" aria-label="Gruenheim Albania, faqja kryesore"><img src="assets/icon.svg" alt="" class="brand-mark"><span class="brand-copy"><b>GRUENHEIM</b><small>WATER FILTER <i>ALBANIA</i></small></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Hap menunë"><span></span><span></span></button><nav class="main-nav" id="main-nav" aria-label="Navigimi kryesor">${navItems.map(([key, label, url]) => `<a href="${url}" class="${page === key ? "active" : ""}">${label}</a>`).join("")}<a class="nav-cta" href="https://wa.me/355685736059?text=P%C3%ABrsh%C3%ABndetje%2C%20dua%20informacion%20p%C3%ABr%20filtrat%20e%20ujit." target="_blank" rel="noreferrer">Na shkruaj <span>↗</span></a></nav></div></header>`;
+
+const footer = document.querySelector("#site-footer");
+if (footer) footer.innerHTML = `<footer class="site-footer"><div class="container footer-main"><a class="brand brand-footer" href="index.html"><img src="assets/icon.svg" alt="" class="brand-mark"><span class="brand-copy"><b>GRUENHEIM</b><small>WATER FILTER <i>ALBANIA</i></small></span></a><p>Uji i mirë fillon nga zgjedhja e duhur.</p><div class="footer-social"><a href="https://www.instagram.com/gruenheim_water_filter_albania/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://www.facebook.com/profile.php?id=61591731335404" target="_blank" rel="noreferrer">Facebook ↗</a></div></div><div class="container footer-bottom"><span>© ${new Date().getFullYear()} Gruenheim Water Filter Albania</span><div><a href="kontakt.html">Kontakt</a><a href="karriera.html">Bëhu pjesë e ekipit</a></div><span>Shqipëri</span></div></footer>`;
+
+const menuButton = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector(".main-nav");
+menuButton?.addEventListener("click", () => {
+  const expanded = menuButton.getAttribute("aria-expanded") === "true";
+  menuButton.setAttribute("aria-expanded", String(!expanded));
+  mainNav?.classList.toggle("open", !expanded);
+});
+
+document.querySelectorAll(".faq-list details").forEach((item) => item.addEventListener("toggle", () => {
+  if (item.open) document.querySelectorAll(".faq-list details").forEach((other) => { if (other !== item) other.open = false; });
+}));
+
+const offerFormSection = document.querySelector("#formulari");
+const giftCard = document.querySelector(".gift-apply-card");
+const openGift = () => {
+  giftCard?.classList.add("open");
+  if (offerFormSection) {
+    offerFormSection.hidden = false;
+    window.setTimeout(() => offerFormSection.scrollIntoView({ behavior: "smooth", block: "start" }), 250);
+  }
+};
+document.querySelector("#open-gift")?.addEventListener("click", openGift);
+document.querySelector("#close-gift")?.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (offerFormSection) offerFormSection.hidden = true;
+  document.querySelector(".giveaway-section")?.scrollIntoView({ behavior: "smooth" });
+});
+if (location.hash === "#formulari" && offerFormSection) openGift();
+
+const waterForm = document.querySelector("#water-form");
+const problemBoxes = [...document.querySelectorAll('#water-form input[name="probleme"]')];
+const problemError = document.querySelector("#problem-error");
+problemBoxes.forEach((box) => box.addEventListener("change", () => {
+  if (problemBoxes.some((item) => item.checked) && problemError) problemError.hidden = true;
+}));
+waterForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const checked = problemBoxes.filter((input) => input.checked);
+  if (!checked.length) {
+    if (problemError) problemError.hidden = false;
+    problemBoxes[0]?.focus();
+    return;
+  }
+  if (problemError) problemError.hidden = true;
+  if (!waterForm.reportValidity()) return;
+  const data = new FormData(waterForm);
+  const lines = ["Përshëndetje, dua të kërkoj analizën dhe testimin falas të ujit nga Gruenheim.", "", "TË DHËNAT PERSONALE", `Emri: ${data.get("emri")}`, `Telefoni: ${data.get("telefoni")}`, `Qyteti / zona: ${data.get("qyteti")}`, `Grupmosha: ${data.get("grupmosha")}`, `Statusi familjar: ${data.get("statusi")}`, `Banesa: ${data.get("banesa")}`, `Punësimi: ${data.get("punesimi")}`, "", "INFORMACION PËR UJIN", `Burimi: ${data.get("burimi")}`, `Pi direkt nga çezma: ${data.get("pi-uje")}`, `Cilësia e vlerësuar: ${data.get("cilesia")}`, `Problemet e vërejtura: ${checked.map((input) => input.value).join(", ")}`, `Përdor filtër: ${data.get("filter-aktual")}`, "", "TAKIMI", `Disponueshmëria: ${data.get("takimi")}`, `Adresa: ${data.get("adresa")}`, `Sugjeruar nga: ${data.get("referuesi")}`];
+  window.open(`https://wa.me/355685736059?text=${encodeURIComponent(lines.join("\n"))}`, "_blank", "noopener,noreferrer");
+});
+
+const contactForm = document.querySelector("#contact-form");
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!contactForm.reportValidity()) return;
+  const data = new FormData(contactForm);
+  const message = ["Përshëndetje Gruenheim, kam një kërkesë.", "", `Emri: ${data.get("emri")}`, `Telefoni: ${data.get("telefoni")}`, `Tema: ${data.get("tema")}`, `Mesazhi: ${data.get("mesazhi")}`].join("\n");
+  window.open(`https://wa.me/355685736059?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+});
+
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const revealSelector = ["main section:not(.hero):not(.page-hero) .section-heading", ".intro-heading", ".solution-card", ".catalog-card", ".story-grid > *", ".gift-content > *", ".service-tile", ".quote-inner > *", ".home-cta-inner > *", ".solution-detail > *", ".product-note", ".accessory-card", ".service-feature > *", ".service-row", ".maintenance-inner > *", ".giveaway-grid > *", ".lead-form fieldset", ".job-card", ".contact-grid > *", ".contact-form-layout > *", ".faq-grid > *", ".faq-list details", ".bottom-cta-inner > *"].join(",");
+  const revealItems = [...document.querySelectorAll(revealSelector)];
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+  revealItems.forEach((element, index) => {
+    element.classList.add("scroll-reveal");
+    element.style.setProperty("--reveal-delay", `${(index % 4) * 75}ms`);
+    revealObserver.observe(element);
+  });
+}
