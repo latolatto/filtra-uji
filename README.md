@@ -5,8 +5,8 @@ Faqe statike, responsive në shqip. Hap `index.html` për faqen kryesore.
 ## Faqet
 
 - `index.html` — kryefaqja dhe përmbledhja e ofertave/shërbimeve
-- `zgjidhjet.html` — çfarë ofrojmë: zbutës uji, montim, pishina dhe pajisje
-- `produktet.html` — faqe e dedikuar për filtrat e ujit dhe mirëmbajtjen
+- `produktet.html` — katalogu i produkteve për filtrimin dhe trajtimin e ujit, përfshirë pishinat
+- `filtrat.html` — faqe e dedikuar për filtrat e ujit dhe mirëmbajtjen
 - `rreth-nesh.html` — ekipi, qasja dhe mënyra si punojmë
 - `oferta.html` — dhurata e analizës së ujit dhe formulari i kërkesës
 - `karriera.html` — vende pune dhe aplikimi në WhatsApp
